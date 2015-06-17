@@ -18,6 +18,7 @@ struct CurrentWeather {
     init(weatherDictionary: [String: AnyObject]) {
         temperature = weatherDictionary["temperature"] as! Int
         humidity = weatherDictionary["humidity"] as! Int
-        humidity = weatherDictionary["precipProbability"] as! Int
+        precipProbability = weatherDictionary["precipProbability"] as! Int
+        summary = weatherDictionary["summary"]! as! String
     }
 }
