@@ -27,7 +27,7 @@ class NetworkOperation {
             
             if let httpResponse = response as? NSHTTPURLResponse {
                 switch(httpResponse.statusCode) {
-                case:200
+                case 200:
                     let jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String:AnyObject]
                     completion(jsonDictionary)
                 default:
@@ -37,5 +37,7 @@ class NetworkOperation {
                 println("http response is not valid")
             }
         }
+        
+        dataTask.resume()
     }
 }

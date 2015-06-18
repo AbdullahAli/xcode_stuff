@@ -11,25 +11,23 @@ import UIKit
 class ViewController: UIViewController {
     
     private let forecastAPIKey = "1afa211bb2ec31a0febb289e8081ad59"
+    let coor: (lat: Double, long: Double) = (37.8267,-122.423)
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let forecastBaseURL = NSURL(string: "https://api.forecast.io/forecast/\(forecastAPIKey)/")
-        let forecastURL = NSURL(string: "37.8267,-122.423", relativeToURL: forecastBaseURL)
-        
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: config)
-        
-        let request = NSURLRequest(URL: forecastURL!)
-        
-        let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
-            println(data)
-        })
-        
-        dataTask.resume()
+        let forecastService = ForecastService(APIKey: forecastAPIKey)
+        forecastService.getForecast(coor.lat, long: coor.long) {
+            (let currently) in
+            if let currentWeather = currently {
+                println(currentWeather.humidity)
+                println(currentWeather.precipProbability)
+                println(currentWeather.summary)
+                println(currentWeather.temperature)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,15 +10,34 @@ import Foundation
 
 struct CurrentWeather {
     
-    let temperature: Int
-    let humidity: Int
-    let precipProbability: Int
-    let summary: String
+    let temperature: Double?
+    let humidity: Double?
+    let precipProbability: Int?
+    let summary: String?
     
     init(weatherDictionary: [String: AnyObject]) {
-        temperature = weatherDictionary["temperature"] as! Int
-        humidity = weatherDictionary["humidity"] as! Int
-        precipProbability = weatherDictionary["precipProbability"] as! Int
-        summary = weatherDictionary["summary"]! as! String
+        if let temp = weatherDictionary["temperature"] as? Double {
+            temperature = temp
+        } else {
+            temperature = nil
+        }
+        
+        if let humid = weatherDictionary["humidity"] as? Double {
+            humidity = humid
+        } else {
+            humidity = nil
+        }
+        
+        if let preProb = weatherDictionary["precipProbability"] as? Int {
+            precipProbability = preProb
+        } else {
+            precipProbability = nil
+        }
+        
+        if let summ = weatherDictionary["summary"] as? String {
+            summary = summ
+        } else {
+            summary = nil
+        }
     }
 }
