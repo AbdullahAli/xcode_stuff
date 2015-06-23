@@ -35,12 +35,24 @@ class ViewController: UIViewController {
 //        }
         
         // origin -> center     (- height/2)   50/2   ->  -25
-        let positon = (x: self.view.frame.width/2, y:self.view.frame.height/2)
-        let paintView = UIView(frame: CGRectMake(positon.x-25, positon.y-25, 50, 50))
+        let side: CGFloat = 50
+        let centerPosition = (x: self.view.frame.width/2, y: self.view.frame.height/2)
+        let bottomCenterPosition = (x: centerPosition.x, y: self.view.frame.height)
+        
+        let originPosition = (x: bottomCenterPosition.x-side/2, y: bottomCenterPosition.y-side/2)
+        
+        let paintView = UIView(frame: CGRectMake(originPosition.x, originPosition.y, side, side))
         paintView.backgroundColor = UIColor.yellowColor()
+        paintView.layer.cornerRadius = side/2
         self.view.addSubview(paintView)
-        paintView.center.x = positon.x
-        paintView.center.y = positon.y
+
+        
+        UIView.animateWithDuration(0.4) {
+            paintView.transform = CGAffineTransformMakeRotation(CGFloat((180 / 180.0 * M_PI)))
+        
+            paintView.transform = CGAffineTransformMakeScale(10, 10)
+        }
+        
         
         
         println("\(self.view.frame.size)")
