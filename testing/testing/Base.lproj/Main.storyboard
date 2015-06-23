@@ -21,6 +21,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="L07-uj-DaT"/>
+                                    <constraint firstAttribute="height" constant="5" id="NRT-gW-LF1"/>
                                     <constraint firstAttribute="height" constant="80" id="gZm-of-qj7"/>
                                     <constraint firstAttribute="width" constant="100" id="rnK-kv-2ZV"/>
                                     <constraint firstAttribute="height" constant="100" id="sYC-SK-S1Z"/>
@@ -28,6 +29,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="L07-uj-DaT"/>
+                                        <exclude reference="NRT-gW-LF1"/>
                                         <exclude reference="gZm-of-qj7"/>
                                         <exclude reference="rnK-kv-2ZV"/>
                                         <exclude reference="sYC-SK-S1Z"/>
@@ -36,9 +38,10 @@
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="L07-uj-DaT"/>
+                                        <include reference="NRT-gW-LF1"/>
                                         <exclude reference="gZm-of-qj7"/>
                                         <include reference="rnK-kv-2ZV"/>
-                                        <include reference="sYC-SK-S1Z"/>
+                                        <exclude reference="sYC-SK-S1Z"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -47,6 +50,7 @@
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="IIT-W3-gPw" secondAttribute="bottom" id="LX6-jO-DPg"/>
                             <constraint firstAttribute="centerX" secondItem="IIT-W3-gPw" secondAttribute="centerX" id="QNt-PK-enw"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="IIT-W3-gPw" secondAttribute="bottom" constant="300" id="au1-S8-ra3"/>
                             <constraint firstAttribute="centerY" secondItem="IIT-W3-gPw" secondAttribute="centerY" id="ba1-Jb-3Bz"/>
                             <constraint firstAttribute="centerY" secondItem="IIT-W3-gPw" secondAttribute="centerY" id="dCS-r5-vPQ"/>
                         </constraints>
@@ -56,14 +60,16 @@
                                 <exclude reference="ba1-Jb-3Bz"/>
                                 <exclude reference="dCS-r5-vPQ"/>
                                 <exclude reference="LX6-jO-DPg"/>
+                                <exclude reference="au1-S8-ra3"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
                                 <include reference="QNt-PK-enw"/>
-                                <include reference="ba1-Jb-3Bz"/>
+                                <exclude reference="ba1-Jb-3Bz"/>
                                 <exclude reference="dCS-r5-vPQ"/>
                                 <exclude reference="LX6-jO-DPg"/>
+                                <include reference="au1-S8-ra3"/>
                             </mask>
                         </variation>
                     </view>

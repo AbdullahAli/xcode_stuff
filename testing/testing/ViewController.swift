@@ -47,11 +47,32 @@ class ViewController: UIViewController {
         self.view.addSubview(paintView)
 
         
-        UIView.animateWithDuration(0.4) {
-            paintView.transform = CGAffineTransformMakeRotation(CGFloat((180 / 180.0 * M_PI)))
+//        UIView.animateWithDuration(0.4) {
+//            paintView.transform = CGAffineTransformMakeRotation(CGFloat((180 / 180.0 * M_PI)))
+//        
+//            paintView.transform = CGAffineTransformMakeScale(12, 12)
+//        }
         
-            paintView.transform = CGAffineTransformMakeScale(10, 10)
-        }
+        UIView.animateWithDuration(0.4, animations: {
+            paintView.transform = CGAffineTransformMakeRotation(CGFloat((180 / 180.0 * M_PI)))
+            
+            paintView.transform = CGAffineTransformMakeScale(12, 12)
+            }, completion: {
+                (let b) in
+                let animation = CABasicAnimation(keyPath: "cornerRadius")
+                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+                animation.fromValue = self.image.layer.cornerRadius
+                animation.toValue = 0
+                animation.duration = 1
+                animation.repeatCount = 0
+                animation.fillMode = kCAFillModeForwards;
+                animation.removedOnCompletion = false
+
+                paintView.layer.addAnimation(animation, forKey: "cornerRadius")
+                
+        })
+        
+//        sleep(UInt32(3))
         
         
         
